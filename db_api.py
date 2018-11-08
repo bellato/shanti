@@ -37,7 +37,7 @@ class CManageDB:
         return self.cursor.fetchall()
 
     def change_sold_lot(self, lot):
-        self.cursor.execute('update all_lots set flag = 0 where id_lot = ?', (lot['id_lot']))
+        self.cursor.execute('update all_lots set flag = 0 where id_lot = :id', {"id": lot['id_lot']})
         self.conn.commit()
 
     def get_history_lot(self):
